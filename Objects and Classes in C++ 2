@@ -1,0 +1,78 @@
+#include <iostream>
+#include <cstdlib> 
+using namespace std;
+
+class Rational
+{
+private:    
+    int num; 
+    int den; // should be > 0 
+    
+    int gcd(int a, int b){ //use Euclidean algorithm
+        while (b != 0){
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }     
+    
+    void reduce(){
+        int g = gcd(abs(num), abs(den));
+        num  = num/g;
+        den = den/g;
+        
+        if (den < 0){
+            num = -num;
+            den = -den;
+        }
+    }
+    
+public:     
+    Rational(){ // the default constructor that set value to 1
+        num = 1;
+        den = 1;
+    }
+    
+    Rational(int n, int d){ // constructor
+        if (d == 0){
+            cout<<"error, denominator must be different from zero: \n";
+            num = 1;
+            den = 1;
+        }
+        else if (d < 0){
+            num = n;
+            den = -d;
+        }
+        else{
+            num = n;
+            den = d;
+            reduce();
+        }
+    }
+    
+    Rational(int whole){ // constructor that initialize fraction -> whole number
+        num = whole;
+        den = 1;
+    }
+    
+    int numerator() const{ //getter
+        return num;
+    } 
+    
+    int denominator() const{
+        return den;
+    }
+    
+    void display() const{
+        cout<<num<<"/"<<den<<endl;
+    }
+    
+};
+
+int main()
+{
+    Rational r1(2,4);
+    r1.display();
+    return 0;
+}
