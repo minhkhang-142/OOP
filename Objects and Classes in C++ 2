@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstdlib> 
+#include <cstdlib> // to use abs()
 using namespace std;
 
 class Rational
