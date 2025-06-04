@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+class Mother()
+{
+private:
+    string Message;
+
+    
+public:
+    
+  
+    void setMessage(string message){
+       Message = message;
+    }
+    string getMessage(){
+        return Message;
+    }
+    
+    
+    Mother(string message){
+        Message = message;
+     
+    }
+        
+    void display(){
+        cout<<"Message: "<<Message;
+
+    }
+};
+
+class Daughter()
+{
+private:
+     string Message2;
+public:
+    void setMessage2(string message2){
+       Message2 = message2;
+    }
+    string getMessage2(){
+        return Message2;
+    }
+     
+    Daughter (string message2){
+        Message2 = message2;
+     
+    }
+        
+    void display(){
+        cout<<"Message: "<<Message;
+
+    }
+};
+
+int main()
+{
+    Mother gay
+    return 0;
+}
