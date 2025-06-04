@@ -1,59 +1,26 @@
 #include <iostream>
 using namespace std;
 
-class Mother()
-{
-private:
-    string Message;
-
-    
-public:
-    
-  
-    void setMessage(string message){
-       Message = message;
-    }
-    string getMessage(){
-        return Message;
-    }
-    
-    
-    Mother(string message){
-        Message = message;
-     
-    }
-        
+class Mother{
+ public:
+    Mother(){}
     void display(){
-        cout<<"Message: "<<Message;
-
+        cout<<"Why are you so gay."<<endl;
     }
 };
 
-class Daughter()
-{
-private:
-     string Message2;
+class Daughter : public Mother{
 public:
-    void setMessage2(string message2){
-       Message2 = message2;
-    }
-    string getMessage2(){
-        return Message2;
-    }
-     
-    Daughter (string message2){
-        Message2 = message2;
-     
-    }
-        
+    Daughter(){}
+    
     void display(){
-        cout<<"Message: "<<Message;
-
+        cout<<" Gay af, shut up bitch."<<endl;
     }
 };
 
 int main()
 {
-    Mother gay
+    Daughter d;
+    d.display();
     return 0;
 }
