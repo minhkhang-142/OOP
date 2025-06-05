@@ -1,14 +1,68 @@
 #include <iostream>
 using namespace std;
 
-class Person{
-private:
+class Person {
+protected:
+    int Age;
 
-    
+public:
+    Person(int age = 0) {
+        Age = age;
+    }
+
+    void setAge(int n) {
+        Age = n;
+    }
+
+    int getAge() {
+        return Age;
+    }
+
+    void Greet() {
+        cout << "Hello!" << endl;
+    }
 };
 
-int main()
-{
-    
+class Student : public Person {
+public:
+    Student(int age = 0) : Person(age) {}
+
+    void GoToClasses() {
+        cout << "I'm going to class." << endl;
+    }
+
+    void ShowAge() {
+        cout << "My age is: " << getAge() << " years old." << endl;
+    }
+};
+
+class Teacher : public Person {
+private:
+    string Subject;
+public:
+    Teacher(int age = 0) : Person(age) {}
+
+    void Explain() {
+        cout << "Explanation begins!" << endl;
+    }
+
+    void setSubject(string s) {
+        Subject = s;
+    }
+};
+
+int main() {
+    Person someone(20);
+    someone.Greet();
+
+    Student student(21);
+    student.Greet();
+    student.GoToClasses();
+    student.ShowAge();
+
+    Teacher teacher(30);
+    teacher.Greet();
+    teacher.Explain();
+
     return 0;
 }
