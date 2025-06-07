@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Shape
+{
+public:
+    virtual float area();
+};
+
+class Cycle : public Shape
+{
+    float radius;
+public:
+    void area() overrride{
+        
+    }
+};
+
+class Rectangle : public Shape
+{
+    
+};
+
+int main()
+{
+    
+    return 0;
+}
