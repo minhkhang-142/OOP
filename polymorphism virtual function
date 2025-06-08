@@ -1,29 +1,50 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 class Shape
 {
 public:
-    virtual float area();
+    virtual float area() = 0;
 };
 
 class Cycle : public Shape
 {
     float radius;
 public:
-    void area() overrride{
-        
+    Cycle(float r){
+        radius = r;
+    }
+    
+    float area() override{
+        return radius * radius * M_PI;
     }
 };
 
 class Rectangle : public Shape
 {
+    float width, height;
+public:
+    Rectangle(float w, float h){
+        width = w;
+        height = h;
+    }
     
+    float area() override{
+        return width * height;
+    }
 };
 
 int main()
 {
+    Shape* s1 = new Cycle(5);
+    Shape* s2 = new Rectangle(4,6);
     
+    cout<<"Area of circle: "<< s1->area() << endl;
+    cout<<"Area of rectangle: "<< s2->area() << endl;
+    
+    delete s1;
+    delete s2;
     return 0;
 }
