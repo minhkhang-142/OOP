@@ -1,0 +1,26 @@
+#include<iostream>
+#include <ifstream>
+using namespace std;
+
+class Shape {
+    virtual void display() = 0;
+    virtual void ~display();
+};
+
+class Triangle: public Shape{
+    
+};
+
+class Rectangle: public Shape{
+    
+};
+
+class Square : public Shape{
+    
+};
+
+int main()
+{
+    
+    return 0;
+}
