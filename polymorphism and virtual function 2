@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+
+class Animal{
+ public:
+    virtual void speak() = 0; //abstract function
+    virtual string getType() = 0; // returns type of animal
+    
+    virtual ~Animal(){
+        cout<<" Animal is being destroyed."<< endl;
+    }
+};
+
+class Dog : public Animal{
+ public:
+    void speak() override{
+        cout<<"Woof"<<endl;
+    }
+    
+    string getType(){
+        return "Dog";
+    }
+};
+
+class Cat : public Animal{
+public:
+    void speak() override{
+        cout<<"Meow"<<endl;
+    }
+    
+    string getType(){
+        return "Cat";
+    }
+};
+
+class Cow : public Animal{
+ public:
+    void speak() override{
+        cout<<"Moo"<<endl;
+    }
+    
+    string getType(){
+        return "Cow";
+    }
+};
+
+int main()
+{
+    Animal* zoo[3];
+    zoo[0] = new Dog();
+    zoo[1] = new Cat;
+    zoo[2] = new Cow();
+    
+    for (int i = 0; i < 3; i++){
+        cout<<zoo[i]->getType()<<" says: ";
+        zoo[i]->speak();
+    }
+    
+    for(int i = 0; i < 3; i++){
+        cout<<"Deleting "<<zoo[i]->getType()<<"..."<<endl;
+        delete zoo[i];
+    }
+    return 0;
+}
