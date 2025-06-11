@@ -1,0 +1,80 @@
+#include <iostream>
+using namespace std;
+
+class Time
+{
+public:
+    int hours, minutes, seconds;
+
+    Time(){
+        hours = 0;
+        minutes = 0;
+        seconds = 0;
+    }
+    Time(float h, float m, float s){
+        hours = h;
+        minutes = m;
+        seconds = s;
+    }
+
+    Time operator +(const Time& other){
+        Time result;
+        result.seconds = seconds + other.seconds;
+        result.minutes = minutes + other.minutes;
+        result.hours = hours + other.hours;
+
+        if (seconds >= 60){
+            result.minutes += result.seconds/60;
+            result.seconds %= 60;
+        }
+
+        if (minutes >= 60){
+            result.hours += result.minutes/60;
+            result.minutes %= 60;
+        }
+
+        result.hours %= 24;
+
+        return result;
+    }
+
+    bool operator >(const Time& t){
+        if (hours > t.hours) return true;
+        else if (hours < t.hours) return false;
+
+        if (minutes > t.minutes) return true;
+        else if (minutes < t.minutes) return false;
+
+        return seconds > t.seconds;
+    }
+
+    Time& operator =(const Time& t){
+        if(this != &t){
+            hours = t.hours;
+            minutes = t.minutes;
+            seconds = t.seconds;
+        }
+        return *this;
+    }
+
+    void display(){
+        cout<<"time: "<<hours<<" : "<<minutes<<" : " <<seconds<<endl;
+    }
+};
+
+int main()
+{
+    Time t1(14,10,5);
+    Time t2(2,55,58);
+    Time t3;
+    t3 = t1 + t2;
+
+    t1.display();
+    t2.display();
+    t3.display();
+
+    if(t3 > t1){
+        cout<<"t3 is later than t1"<<endl;
+    }
+    return 0;
+}
