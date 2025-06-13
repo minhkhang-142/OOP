@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+class CSStudent
+{
+private:
+    int Member_id;
+    string Student_name;
+    string Student_address;
+    string Scholarship;
+public:
+    CSStudent(int id, string name, string addr,string s){
+        Member_id = id;
+        Student_name = name;
+        Student_address = addr;
+        Scholarship = s;
+    }
+
+    void setid(int id){
+        Member_id = id;
+    }
+
+    int getid(){
+        return Member_id;
+    }
+
+    void setname(string name){
+        Student_name = name;
+    }
+
+    string getname(){
+        return Student_name;
+    }
+
+    void setaddr(string addr){
+        Student_address = addr;
+    }
+
+    string getaddr(){
+        return Student_address;
+    }
+
+    void setScholarship(string s){
+        Scholarship = s;
+    }
+
+    string getScholarship(){
+        return Scholarship;
+    }
+
+    void display(){
+        cout<<"Student's information: "<<endl;
+        cout<<"ID: "<<Member_id << endl;
+        cout<<"Name: "<<Student_name << endl;
+        cout<<"Adress: "<<Student_address<< endl;
+        cout<<"Scholarship: "<<Scholarship << endl;
+
+    }
+};
+
+
+int main()
+{
+    CSStudent A = CSStudent(10423142, "Khang","Nha Trang" ,"50% tuition fee");
+    A.display();
+    return 0;
+}
