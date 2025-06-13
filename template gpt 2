@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+template <typename T1, typename T2>
+class Pair
+{
+private:
+    T1 first;
+    T2 second;
+public:
+    Pair(T1 f, T2 s){
+        first = f;
+        second = s;
+    }
+
+    T1 getfirst()const {
+        return first;
+    }
+
+    T2 getsecond() const {
+        return second;
+    }
+
+    void swapvalues()
+    {
+        swap(first, second);
+    }
+
+    void print()
+    {
+        cout<<"first = " << first << ", " << "second = "<< second<<endl;
+    }
+};
+
+
+
+int main()
+{
+    Pair<int, int> p(5, 3);
+    p.swapvalues();
+    p.print();
+    return 0;
+}
