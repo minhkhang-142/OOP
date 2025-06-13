@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+
+void myswap(T &a, T &b){
+        T temp = a;
+        a = b;
+        b = temp;
+    }
+
+
+int main()
+{
+    int x = 5, y = 10;
+
+    myswap(x, y);
+    cout<<"x = "<< x << " y = " << y <<endl;
+
+    double c = 9.5, d = 8.7;
+
+    myswap(c, d);
+    cout<<"c = "<< c << " d = " << d <<endl;
+
+    string e = "hello", f = "world";
+    myswap(e, f);
+    cout<<"e = "<< e << " f = " << f <<endl;
+    return 0;
+}
