@@ -1,0 +1,65 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Vector2D
+{
+private:
+    float x, y;
+
+public:
+    Vector2D(){
+        x = 0;
+        y = 0;
+    }
+
+    Vector2D(float a, float b){
+        x = a;
+        y = b;
+    }
+
+    float magnitude()const {
+        return sqrt((x * x )+ (y * y));
+    }
+
+    bool operator >(const Vector2D& other){
+        return magnitude() > other.magnitude();
+    }
+
+    Vector2D& operator = (const Vector2D& other){
+        if(this != &other){
+            x = other.x;
+            y = other.y;
+        }
+        return *this;
+    }
+
+    friend ostream& operator<<(ostream& os, const Vector2D& v);
+};
+
+ostream& operator<<(ostream& os, const Vector2D& v){
+    os << "(" << v.x << ", " << v.y << ")";
+    return os;
+}
+
+int main()
+{
+    int n;
+    cout<<"enter n: ";
+    cin >> n;
+
+    Vector2D v1(3, 4);
+    Vector2D v2 (1,2);
+
+    cout<<"v1 :"<< v1 << endl;
+    cout<<"v2: "<< v2 << endl;
+
+    if(v1 > v2){
+        cout << "V1 greater in magnitude than v2" << endl;
+    }
+    else{
+        cout<<"v2 is greater or equal in magnitude to v1" << endl;
+    }
+
+    return 0;
+}
