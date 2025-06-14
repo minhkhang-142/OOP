@@ -1,0 +1,115 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Quadrilateral
+{
+protected:
+    double widths1,widths2 ,height;
+
+public:
+    Quadrilateral(double w1= 1, double w2 = 1 ,double h = 1){
+        widths1 = w1;
+        widths2 = w2;
+        height = h;
+    }
+
+    virtual double area() = 0;
+    virtual ~Quadrilateral(){
+        cout<<"Quadrilateral is being destroyed"<<endl;
+    }
+
+    void display(){
+        cout<<"area = "<< area() <<endl;
+    }
+};
+
+class Rectangle : public Quadrilateral
+{
+public:
+    Rectangle(double w, double h){
+        widths1 = w;
+        height = h;
+    }
+
+    double area() override{
+        return widths1 * height;
+    }
+};
+
+class Parallelogram : public Quadrilateral
+{
+public:
+    Parallelogram(double w, double h){
+        widths1 = w;
+        height = h;
+    }
+
+    double area() override{
+        return widths1 * height;
+    }
+
+};
+
+class Trapezium : public Quadrilateral
+{
+public:
+    Trapezium(double w1, double w2, double h){
+        widths1 = w1;
+        widths2 = w2;
+        height = h;
+    }
+
+    double area() override{
+        return 0.5 * (widths1 + widths2) * height;
+    }
+};
+
+
+
+int main()
+{
+    int n;
+    cout<<"enter number of quadrilateral: "<<endl;
+    cin>> n;
+
+    Quadrilateral* arr[n];
+
+    for(int i = 0; i < n; i++){
+        int type;
+        cout<<"enter type of shape (1 = rectangle, 2  = parallelogram, 3 = trapezium): ";
+        cin>> type;
+
+        if(type == 1){
+            double w, h;
+            cout<<"enter width and height: ";
+            cin >> w >> h;
+            arr[i] = new Rectangle(w,h);
+        }
+
+        else if(type == 2){
+            double w, h;
+            cout<<"enter width and height: ";
+            cin >> w >> h;
+            arr[i] = new Parallelogram(w,h);
+        }
+
+        else if(type == 3){
+            double w1, w2, h;
+            cout<<"enter width1 width2 and height: ";
+            cin>>w1 >> w2 >> h;
+            arr[i] = new Trapezium(w1, w2, h);
+        }
+    }
+
+    cout<<"area of quadrilateral: "<<endl;
+    for(int i = 0; i < n; i++){
+        arr[i]->display();
+    }
+
+    //free memory
+    for(int i = 0; i < n; i++){
+        delete arr[i];
+    }
+    return 0;
+}
