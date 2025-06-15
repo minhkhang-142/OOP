@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+class Box {
+private:
+    T value;
+
+public:
+    Box(T v){
+        value = v;
+    }
+
+    T getValue() const{
+        return value;
+    }
+
+    friend void compare (const Box<T>& b1, const Box<T>& b2){
+        if(b1.value > b2.value){
+            cout<<b1.value <<" is larger than "<<b2.value<<endl;
+        }
+        else{
+            cout<<b2.value <<" is larger than "<<b1.value <<endl;
+        }
+    }
+};
+
+int main() {
+
+    Box<int> a(10), b(7);
+    compare(a,b);
+
+    Box<string> s1("apple"), s2("banana");
+    compare(s1, s2);
+    return 0;
+}
