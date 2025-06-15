@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Complex
+{
+private:
+    double real, imaginary;
+
+public:
+    Complex(double r = 0, double i = 0){
+        real = r;
+        imaginary = i;
+    }
+
+    Complex operator +(const Complex& other) const{
+        Complex result;
+        result.real = real + other.real;
+        result.imaginary = imaginary + other.imaginary;
+        return result;
+    }
+
+    Complex operator -(const Complex& other) const{
+        Complex result;
+        result.real = real - other.real;
+        result.imaginary = imaginary - other.imaginary;
+        return result;
+    }
+
+    Complex operator *(const Complex& other)const{
+        Complex result;
+        result.real = (real * other.real - imaginary * other.imaginary);
+        result.imaginary = (real * other.imaginary + imaginary * other.real);
+        return result;
+    }
+
+    Complex operator /(const Complex& other)const{
+        Complex result;
+        result.real = (real * other.real + imaginary*other.imaginary)/(other.real * other.real + other.imaginary*other.imaginary);
+        result.imaginary = (imaginary * other.real - real * other.imaginary)/(other.real * other.real + other.imaginary * other.imaginary);
+        return result;
+    }
+
+    friend ostream& operator<<(ostream& out, const Complex& c);
+};
+ostream& operator<<(ostream& out, const Complex& c){
+    out<<c.real <<" + " <<abs(c.imaginary)<<"i";
+    return out;
+}
+
+int main()
+{
+    Complex a(1,2);
+    Complex b(3,4);
+
+
+    cout<<a+b<<endl;
+    cout<<a-b<<endl;
+    cout<<a*b<<endl;
+    cout<<a/b<<endl;
+
+    return 0;
+}
