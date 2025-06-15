@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+class Time {
+private:
+    int hours, minutes;
+
+    void normalize() {
+        if (minutes >= 60) {
+            hours += minutes / 60;
+            minutes %= 60;
+        }
+    }
+
+public:
+    Time(int h = 0, int m = 0) {
+        hours = h;
+        minutes = m;
+        normalize();
+    }
+
+    void addTime(const Time& t) {
+        hours += t.hours;
+        minutes += t.minutes;
+        normalize();
+    }
+
+    void addTime(int h, int m) {
+        hours += h;
+        minutes += m;
+        normalize();
+    }
+
+    Time operator+(const Time& t) const {
+        Time result(hours + t.hours, minutes + t.minutes);
+        return result;
+    }
+
+    friend ostream& operator<<(ostream& os, const Time& t) {
+        os << t.hours << " hours and " << t.minutes << " minutes";
+        return os;
+    }
+};
+
+int main() {
+    Time t1(1, 45);
+    Time t2(0, 50);
+
+    t1.addTime(t2);         // Function overloading
+    t1.addTime(1, 30);      // Overloaded version with int
+
+    Time t3 = t1 + t2;      // Operator overloading '+'
+
+    cout << "t1: " << t1 << endl;  // Using << operator
+    cout << "t2: " << t2 << endl;
+    cout << "t3 (t1 + t2): " << t3 << endl;
+
+    return 0;
+}
